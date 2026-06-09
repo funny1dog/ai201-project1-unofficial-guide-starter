@@ -84,9 +84,24 @@ While there are thousands of official textbooks and vendor docs (IBM, Google) ex
      Consider: context length limits, multilingual support, accuracy on domain-specific text,
      latency, and local vs. API-hosted. -->
 
-**Model used:**
+**Model used:** `all-MiniLM-L6-v2` via `sentence-transformers`
 
-**Production tradeoff reflection:**
+**Production tradeoff reflection:** For a real production system where cost is not a constraint, I would evaluate a larger, more powerful API-based model like OpenAI's `text-embedding-3-large`. The key tradeoffs would be accuracy vs. latency and cost. The larger model would likely provide more nuanced and accurate embeddings for domain-specific jargon, leading to better retrieval. However, this comes at the cost of higher per-query pricing, dependence on an external service, and increased network latency compared to the fast, free, and local `all-MiniLM-L6-v2` model.
+
+---
+
+## Retrieval Test Results
+
+**Query 1:** "According to Blind reviews, what is the expected base salary range for a mid-level SWE at IBM Quantum?"
+* **Top relevant chunk retrieved:** "I'm at IBM Quantum. The TC here is standard IBM bands, meaning it's lower than Google/Meta. Expect around $160k-$180k base for a mid-level SWE, plus a 10% bonus..."
+* **Why it is relevant:** The user specifically asked for the base salary range for a mid-level SWE at IBM Quantum, and this chunk provides the exact salary band ($160k-$180k) from a verified IBM Quantum employee.
+
+**Query 2:** "What version of Qiskit should I study for the IBM Qiskit Developer Certification?"
+* **Top relevant chunk retrieved:** "A huge gotcha: IBM frequently updates Qiskit. Make sure you are studying the version of Qiskit that the exam is currently testing! When I took it, the exam was testing Qiskit 0.28..."
+* **Why it is relevant:** The query asks which version of Qiskit to study, and the chunk directly addresses this by warning the reader that IBM updates Qiskit frequently and they must check the syllabus for the specific version being tested.
+
+**Query 3:** "If I don't have a PhD, what specific roles should I target at a quantum company according to QubitWrangler?"
+* **Top relevant chunk retrieved:** "**Comment: QubitWrangler** Not impossible at all, but you have to target the right roles... Look for 'Quantum Software Engineer' or 'Control Systems Engineer' roles, not 'Quantum Research Scientist'."
 
 ---
 
