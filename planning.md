@@ -9,27 +9,25 @@
 
 ## Domain
 
-<!-- What domain did you choose? Why is this knowledge valuable and hard to find through official channels? -->
+**The Unofficial Guide to Quantum Computing Careers and Learning.** 
+While there are thousands of official textbooks and vendor docs (IBM, Google) explaining the physics of quantum mechanics, it is incredibly difficult to find honest, grounded information about the *reality* of working in the field. This domain captures the "unofficial" knowledge: salary bands, how much math you actually need for a SWE role, honest reviews of certifications, and the struggles of dealing with noisy quantum hardware vs. the startup hype. This is valuable for traditional computer scientists looking to pivot into the industry without getting a PhD.
 
 ---
 
 ## Documents
 
-<!-- List your specific sources: URLs, subreddit names, forum threads, or file descriptions.
-     Aim for at least 10 sources that together cover different subtopics or perspectives within your domain. -->
-
 | # | Source | Description | URL or location |
 |---|--------|-------------|-----------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
-| 7 | | | |
-| 8 | | | |
-| 9 | | | |
-| 10 | | | |
+| 1 | r/QuantumComputing | Thread on getting a QC job without a PhD | `documents/01_reddit_phd_job.md` |
+| 2 | Hacker News | Thread about the realities of Quantum Startups | `documents/02_hn_startup_reality.md` |
+| 3 | Personal Blog | Honest review of the IBM Qiskit Developer Cert | `documents/03_qiskit_cert_review.md` |
+| 4 | r/learnmachinelearning | Discussion on the usefulness of QML | `documents/04_qml_usefulness.md` |
+| 5 | Physics StackExchange | Intuitive explanation of Shor's Algorithm for SWEs | `documents/05_shors_algorithm_intuitive.md` |
+| 6 | Awesome List Gist | Opinionated commentary on QC frameworks/books | `documents/06_awesome_quantum_rants.md` |
+| 7 | YouTube Transcript | A day in the life of a Quantum Software Engineer | `documents/07_day_in_life_qse.md` |
+| 8 | r/OMSCS | Reviews on GT's CS 8803 (Intro to QC) course | `documents/08_omscs_quantum_course.md` |
+| 9 | Blind (Teamblind) | Salary and interview culture at Rigetti/IonQ/IBM | `documents/09_teamblind_quantum_tc.md` |
+| 10 | Discord Archive | Unofficial FAQ for a Quantum Hackathon | `documents/10_hackathon_faq.md` |
 
 ---
 
