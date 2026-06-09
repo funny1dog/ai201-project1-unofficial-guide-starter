@@ -9,31 +9,25 @@
 
 ## Domain
 
-<!-- What topic or category of knowledge does your system cover?
-     Why is this knowledge valuable, and why is it hard to find through official channels?
-     Example: "Student reviews of CS professors at [university] — useful because official
-     course descriptions don't reflect teaching style, exam difficulty, or workload." -->
+**The Unofficial Guide to Quantum Computing Careers and Learning.** 
+While there are thousands of official textbooks and vendor docs (IBM, Google) explaining the physics of quantum mechanics, it is incredibly difficult to find honest, grounded information about the *reality* of working in the field. This domain captures the "unofficial" knowledge: salary bands, how much math you actually need for a SWE role, honest reviews of certifications, and the struggles of dealing with noisy quantum hardware vs. the startup hype. This is valuable for traditional computer scientists looking to pivot into the industry without getting a PhD.
 
 ---
 
 ## Document Sources
 
-<!-- List every source you collected documents from.
-     Be specific: include URLs, subreddit names, forum thread titles, or file names.
-     Aim for variety — sources that together cover different subtopics or perspectives. -->
-
 | # | Source | Type | URL or file path |
 |---|--------|------|-----------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
-| 7 | | | |
-| 8 | | | |
-| 9 | | | |
-| 10 | | | |
+| 1 | Reddit | Forum Thread | `documents/01_reddit_phd_job.md` |
+| 2 | Hacker News | Forum Thread | `documents/02_hn_startup_reality.md` |
+| 3 | Personal Blog | Blog Post | `documents/03_qiskit_cert_review.md` |
+| 4 | Reddit | Forum Thread | `documents/04_qml_usefulness.md` |
+| 5 | StackExchange | Q&A | `documents/05_shors_algorithm_intuitive.md` |
+| 6 | GitHub | Curated List | `documents/06_awesome_quantum_rants.md` |
+| 7 | YouTube | Video Transcript | `documents/07_day_in_life_qse.md` |
+| 8 | Reddit | Forum Thread | `documents/08_omscs_quantum_course.md` |
+| 9 | Blind | Forum Thread | `documents/09_teamblind_quantum_tc.md` |
+| 10 | Discord | FAQ / Chat Archive | `documents/10_hackathon_faq.md` |
 
 ---
 
