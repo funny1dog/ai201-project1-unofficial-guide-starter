@@ -128,70 +128,44 @@ While there are thousands of official textbooks and vendor docs (IBM, Google) ex
 
 | # | Question | Expected answer | System response (summarized) | Retrieval quality | Response accuracy |
 |---|----------|-----------------|------------------------------|-------------------|-------------------|
-| 1 | | | | | |
-| 2 | | | | | |
-| 3 | | | | | |
-| 4 | | | | | |
-| 5 | | | | | |
-
-**Retrieval quality:** Relevant / Partially relevant / Off-target  
-**Response accuracy:** Accurate / Partially accurate / Inaccurate
+| 1 | According to Blind reviews, what is the expected base salary range for a mid-level SWE at IBM Quantum? | Expect around $160k-$180k base for a mid-level SWE, plus a 10% bonus. | The system correctly identified the base salary as $160k-$180k plus a 10% bonus, citing `09_teamblind_quantum_tc.md`. | Relevant | Accurate |
+| 2 | According to the review of the IBM Qiskit Developer Certification, how many questions are on the exam and what score is needed to pass? | It is a 60-question multiple-choice test and you need roughly a 68% to pass. | The system stated it's a 60-question test requiring roughly 68% to pass, citing `03_qiskit_cert_review.md`. | Relevant | Accurate |
+| 3 | Which quantum computing book is referred to as the "holy bible" of the field, and why is it not recommended for beginners? | "Quantum Computation and Quantum Information" (Nielsen & Chuang). Dense physics textbook. | Identified "Quantum Computation and Quantum Information" (Mike and Ike) and explained it's a dense physics textbook not suited for beginners without math backgrounds. | Relevant | Accurate |
+| 4 | If I don't have a PhD, what specific roles should I target at a quantum company according to QubitWrangler? | You should target "Quantum Software Engineer" or "Control Systems Engineer" roles, not "Quantum Research Scientist". | The system accurately advised targeting "Quantum Software Engineer" or "Control Systems Engineer" roles, citing `01_reddit_phd_job.md`. | Relevant | Accurate |
+| 5 | What specific math concepts should I review before taking the OMSCS CS 8803 course, and what is the typical weekly workload? | You should review linear algebra, specifically Hilbert spaces, tensor products, and unitary matrices. 15-20 hours a week. | The system advised reviewing linear algebra (Hilbert spaces, tensor products, unitary matrices) and stated the workload is 15-20 hours/week. | Relevant | Accurate |
 
 ---
 
 ## Failure Case Analysis
 
-<!-- Identify at least one question where retrieval or generation did not work as expected.
-     Write a specific explanation of *why* it failed, tied to a part of the pipeline.
+**Question that failed:** "Who or what are Mike and Ike in the context of quantum computing?"
 
-     "The answer was wrong" is not an explanation.
+**What the system returned:** "I don't have enough information on that."
 
-     "The relevant information was split across a chunk boundary, so retrieval returned
-     only half the context — the model didn't have enough to answer correctly" is an explanation.
+**Root cause (tied to a specific pipeline stage):** The failure occurred at the **Retrieval** stage. The embedding model (`all-MiniLM-L6-v2`) heavily associates the phrase "Mike and Ike" with the popular candy brand. Because semantic search looks for meaning rather than exact keywords, the model failed to associate the user's query with the target chunk in `06_awesome_quantum_rants.md` that mentions the Nielsen & Chuang textbook is "Known as 'Mike and Ike'". The relevant chunk was pushed out of the `top-k` results, and the LLM correctly followed grounding instructions by refusing to answer.
 
-     "The embedding model treated the professor's nickname as out-of-vocabulary and returned
-     results from an unrelated review" is an explanation. -->
-
-**Question that failed:**
-
-**What the system returned:**
-
-**Root cause (tied to a specific pipeline stage):**
-
-**What you would change to fix it:**
+**What you would change to fix it:** I would implement a Hybrid Search pipeline (combining Semantic Search with BM25 Keyword Search). BM25 would catch the exact string match for "Mike and Ike", successfully retrieving the document when semantic embeddings fail on the proper noun/nickname.
 
 ---
 
 ## Spec Reflection
 
-<!-- Reflect on how planning.md shaped your implementation.
-     Answer both questions with at least 2–3 sentences each. -->
+**One way the spec helped you during implementation:** Defining the chunking strategy (~512 characters, ~64 overlap) upfront saved a lot of time during the ingestion phase. Because I analyzed my forum-style documents beforehand, I knew this specific chunk size would perfectly encapsulate a single comment or review without diluting the context. I didn't have to waste time blindly tweaking parameters to get readable chunks.
 
-**One way the spec helped you during implementation:**
-
-**One way your implementation diverged from the spec, and why:**
+**One way your implementation diverged from the spec, and why:** I initially planned to use ChromaDB's default similarity settings, but during implementation, I noticed distance scores were awkwardly high (using Squared L2 distance). I diverged from my initial setup by explicitly modifying the ChromaDB collection to use `cosine` distance. This made evaluating the confidence of my retrieval much easier, as valid results consistently scored below 0.5.
 
 ---
 
 ## AI Usage
 
-<!-- Describe at least 2 specific instances where you used an AI tool during this project.
-     For each: what did you give the AI as input, what did it produce, and what did you
-     change, override, or direct differently?
-
-     "I used Claude to help me code" is not sufficient.
-     "I gave Claude my Chunking Strategy section from planning.md and asked it to implement
-     chunk_text(). It returned a function using a fixed character split. I overrode the
-     chunk size from 500 to 200 because my documents are short reviews, not long guides." -->
-
 **Instance 1**
 
-- *What I gave the AI:*
-- *What it produced:*
-- *What I changed or overrode:*
+- *What I gave the AI:* I provided an AI assistant with my `planning.md` Chunking Strategy and asked it to write the `ingest.py` script to load and split the markdown files in my documents folder.
+- *What it produced:* It generated a Python script using LangChain's `RecursiveCharacterTextSplitter`.
+- *What I changed or overrode:* I reviewed the default split separators it provided and overrode them to explicitly prioritize paragraph breaks and newlines (`["\n\n", "\n", " ", ""]`). This ensured my forum posts split cleanly between comments rather than cutting mid-sentence.
 
 **Instance 2**
 
-- *What I gave the AI:*
-- *What it produced:*
-- *What I changed or overrode:*
+- *What I gave the AI:* I gave the AI my `retrieve()` function and asked it to build a Gradio web UI that connects to the Groq API, enforcing strict grounding.
+- *What it produced:* It generated `app.py` with a standard chatbot interface and a basic system prompt.
+- *What I changed or overrode:* I significantly overhauled the formatting of the context string and UI. I directed the script to programmatically extract the source document metadata from the retrieved chunks into a Python `set`, and then output those sources into a completely separate Gradio `Textbox` to strictly satisfy the project's source attribution requirements.
