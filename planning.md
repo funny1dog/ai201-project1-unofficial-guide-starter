@@ -18,16 +18,16 @@ While there are thousands of official textbooks and vendor docs (IBM, Google) ex
 
 | # | Source | Description | URL or location |
 |---|--------|-------------|-----------------|
-| 1 | r/QuantumComputing | Thread on getting a QC job without a PhD | `documents/01_reddit_phd_job.md` |
-| 2 | Hacker News | Thread about the realities of Quantum Startups | `documents/02_hn_startup_reality.md` |
-| 3 | Personal Blog | Honest review of the IBM Qiskit Developer Cert | `documents/03_qiskit_cert_review.md` |
-| 4 | r/learnmachinelearning | Discussion on the usefulness of QML | `documents/04_qml_usefulness.md` |
-| 5 | Physics StackExchange | Intuitive explanation of Shor's Algorithm for SWEs | `documents/05_shors_algorithm_intuitive.md` |
-| 6 | Awesome List Gist | Opinionated commentary on QC frameworks/books | `documents/06_awesome_quantum_rants.md` |
-| 7 | YouTube Transcript | A day in the life of a Quantum Software Engineer | `documents/07_day_in_life_qse.md` |
-| 8 | r/OMSCS | Reviews on GT's CS 8803 (Intro to QC) course | `documents/08_omscs_quantum_course.md` |
-| 9 | Blind (Teamblind) | Salary and interview culture at Rigetti/IonQ/IBM | `documents/09_teamblind_quantum_tc.md` |
-| 10 | Discord Archive | Unofficial FAQ for a Quantum Hackathon | `documents/10_hackathon_faq.md` |
+| 1 | r/QuantumComputing | Thread on getting a QC job without a PhD | `reddit.com/r/QuantumComputing/` -> `documents/01_reddit_phd_job.md` |
+| 2 | Hacker News | Thread about the realities of Quantum Startups | `news.ycombinator.com/` -> `documents/02_hn_startup_reality.md` |
+| 3 | Personal Blog | Honest review of the IBM Qiskit Developer Cert | `medium.com/tag/qiskit` -> `documents/03_qiskit_cert_review.md` |
+| 4 | r/learnmachinelearning | Discussion on the usefulness of QML | `reddit.com/r/learnmachinelearning/` -> `documents/04_qml_usefulness.md` |
+| 5 | Physics StackExchange | Intuitive explanation of Shor's Algorithm for SWEs | `physics.stackexchange.com/` -> `documents/05_shors_algorithm_intuitive.md` |
+| 6 | Awesome List Gist | Opinionated commentary on QC frameworks/books | `github.com/topics/quantum-computing` -> `documents/06_awesome_quantum_rants.md` |
+| 7 | YouTube Transcript | A day in the life of a Quantum Software Engineer | `youtube.com/` -> `documents/07_day_in_life_qse.md` |
+| 8 | r/OMSCS | Reviews on GT's CS 8803 (Intro to QC) course | `reddit.com/r/OMSCS/` -> `documents/08_omscs_quantum_course.md` |
+| 9 | Blind (Teamblind) | Salary and interview culture at Rigetti/IonQ/IBM | `teamblind.com/company/Rigetti` -> `documents/09_teamblind_quantum_tc.md` |
+| 10 | Discord Archive | Unofficial FAQ for a Quantum Hackathon | Local Discord Export -> `documents/10_hackathon_faq.md` |
 
 ---
 
