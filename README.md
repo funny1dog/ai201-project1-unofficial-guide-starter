@@ -114,9 +114,9 @@ While there are thousands of official textbooks and vendor docs (IBM, Google) ex
      Do not just say "I told it to use the documents" — show the actual instruction or explain
      the mechanism. -->
 
-**System prompt grounding instruction:**
+**System prompt grounding instruction:** "You are a helpful assistant for the 'Unofficial Guide to Quantum Computing Careers'. Your job is to answer user questions using ONLY the provided context. If the context does not contain enough information to answer the question, you must explicitly state: 'I don't have enough information on that.' Do not use your general knowledge to answer."
 
-**How source attribution is surfaced in the response:**
+**How source attribution is surfaced in the response:** Sources are programmatically collected during the retrieval stage from the metadata of each chunk. Once the LLM generates the answer, the Gradio interface formats these extracted source document names into a bulleted list and displays them in a dedicated "Retrieved from" output text box, ensuring attribution is deterministic.
 
 ---
 
