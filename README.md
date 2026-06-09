@@ -40,13 +40,39 @@ While there are thousands of official textbooks and vendor docs (IBM, Google) ex
      - Any preprocessing you did before chunking (e.g., stripping HTML, removing headers)
      - What your final chunk count was across all documents -->
 
-**Chunk size:**
+**Chunk size:** 512 characters
 
-**Overlap:**
+**Overlap:** 64 characters
 
-**Why these choices fit your documents:**
+**Why these choices fit your documents:** The source documents are mostly short, conversational forum posts and lists. A fixed-size character chunking strategy is a robust starting point. 512 characters is large enough to contain a complete thought (like a single Reddit comment or a list item) but small enough that the semantic meaning isn't diluted. The 64-character overlap helps preserve context for ideas that might be split across a chunk boundary. We skipped complex HTML cleaning because our ingestion pipeline uses clean markdown files without HTML boilerplate.
 
-**Final chunk count:**
+**Final chunk count:** 47 (Note: This is slightly under the 50-chunk heuristic because our source documents are highly concentrated, pre-cleaned markdown files consisting of short forum comments, rather than bloated web pages. The resulting chunks perfectly encapsulate individual thoughts.)
+
+---
+
+## Sample Chunks
+
+**Chunk 1** (Source: `09_teamblind_quantum_tc.md` | Length: 371 chars)
+> **Comment: ionq_insider**
+> At IonQ, the culture is highly driven by the hardware team. Software engineers are sometimes treated as second-class citizens compared to the trapped-ion physicists. But if you want to work on a system that is actually scaling up right now, it's a great place to be. TC is competitive for startups, but again, liquid cash is lower than big tech.
+
+**Chunk 2** (Source: `03_qiskit_cert_review.md` | Length: 307 chars)
+> **Is it worth it?**
+> If you have zero professional experience in quantum computing and want to get your resume noticed by recruiters, yes. It proves you understand the basics of quantum circuits and can write code using IBM's framework. However, it will *not* get you a job on its own. It's a stepping stone.
+
+**Chunk 3** (Source: `09_teamblind_quantum_tc.md` | Length: 415 chars)
+> **Comment: verified_ibm_q**
+> I'm at IBM Quantum. The TC here is standard IBM bands, meaning it's lower than Google/Meta. Expect around $160k-$180k base for a mid-level SWE, plus a 10% bonus. The culture is very corporate, slow-moving, and academic. You will be working on a very small piece of a massive system. The interview was standard Leetcode Mediums plus system design. No quantum physics questions were asked.
+
+**Chunk 4** (Source: `09_teamblind_quantum_tc.md` | Length: 263 chars)
+> # Blind: Salary and Interview Culture at Quantum Companies (Rigetti, IonQ, IBM)
+> 
+> **Post by: SWE_looking_to_pivot**
+> I have offers from Rigetti Computing and IBM Quantum. What is the culture and Total Compensation (TC) like? I'm coming from a standard web dev role.
+
+**Chunk 5** (Source: `02_hn_startup_reality.md` | Length: 384 chars)
+> **Comment: hardware_hacker**
+> I worked at one of the big superconducting qubit companies. The real bottleneck right now isn't even the quantum chips, it's the classical control hardware. We literally ran out of physical space in the dilution refrigerator for the coaxial cables needed to control 100+ qubits. Until we solve the wiring problem, scaling to 10,000 qubits is a pipe dream.
 
 ---
 
