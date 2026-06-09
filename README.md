@@ -7,6 +7,11 @@
 
 ---
 
+## Demo Video
+
+**[Watch the Project Demo Video Here](./demo.webm)**
+---
+
 ## Domain
 
 **The Unofficial Guide to Quantum Computing Careers and Learning.** 
